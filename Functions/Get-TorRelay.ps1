@@ -3,7 +3,8 @@ function Get-TorRelay {
     param (
         [switch] $ExportExitPolicy,
         [string] [Parameter(Mandatory = $true)] $OutputFolder,
-        [switch] $ReverseLookup
+        [switch] $ReverseLookup,
+        [switch] $EnrichData
     )
     $RelayDataCSV = "TorRelayData.csv"
     $RelayIPCSV = "TorRelayIPs.csv"
@@ -27,7 +28,7 @@ function Get-TorRelay {
     $Uri = "https://onionoo.torproject.org/details"
     $PageResponse = Invoke-WebRequest $Uri -UseBasicParsing
     $DataOutput = ($PageResponse.Content | convertfrom-json).relays
-    if ($ExportExitPolicy){
+    if ($ExportExitPolicy) {
         Write-Host "Exporting exit policy data can take over 5 minutes - doing the needful." -ForegroundColor Gray
     }
     foreach ($Relay in $DataOutput) {
@@ -43,8 +44,29 @@ function Get-TorRelay {
         $RelayData.CountryCode = $Relay.country
         $RelayData.Region = $Relay.region_name
         $RelayData.City = $Relay.city_name
-        $RelayData.ASName = $Relay.as_name
-        $RelayData.ASNumber = $Relay.as
+        if ($null -eq $Relay.as_name) {
+            if ($EnrichData) {
+                    foreach ($Ip in $Relay.or_addresses) {
+                        if ($Ip.StartsWith('[')) {
+                        }
+                        else {
+                            $IPAddr = $Ip.SubString(0, $Ip.IndexOf(":"))
+                            $wr = Invoke-WebRequest -Uri "https://ipwhois.app/json/$IPAddr"
+                            $parsed = $wr.content | convertfrom-json
+                            $RelayData.ASName = $parsed.isp 
+                            $RelayData.ASNumber = $parsed.asn
+                        }
+                    }
+            }
+            else {
+                $RelayData.ASName = $Relay.as_name
+                $RelayData.ASNumber = $Relay.as
+            }
+        }
+        else {
+            $RelayData.ASName = $Relay.as_name
+            $RelayData.ASNumber = $Relay.as
+        }
         $RelayData.BandwidthMaxRate = $Relay.bandwidth_rate
         $RelayData.BandwidthBurst = $Relay.bandwidth_burst
         $RelayData.BandwidthActual = $Relay.observed_bandwidth
