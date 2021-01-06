@@ -52,6 +52,7 @@ Get-TorRelay -OutputFolder C:\TorStats\Output
 * Optional switch: ReverseLookup. This uses Resolve-DnsName to enrich data where there is not a verified hostname returned by the Tor Project API. **Note** This can take up to 3 hours to execute.
 
 * Optional switch: ExportExitPolicy. This will extract node exit policies. Although not completely parsed, it could be used to identify suitable exit nodes if you have a specific set of requirements.
+* Optional switch: EnrichData. EnrichData will pull any missing ISP & ASN data from https://ipwhois.io where there are empty values returned by the Tor Project API.
 
 ## Command Output
 
