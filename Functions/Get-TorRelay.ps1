@@ -51,7 +51,7 @@ function Get-TorRelay {
                         }
                         else {
                             $IPAddr = $Ip.SubString(0, $Ip.IndexOf(":"))
-                            $wr = Invoke-WebRequest -Uri "https://ipwhois.app/json/$IPAddr"
+                            $wr = Invoke-WebRequest -Uri "https://ipwhois.app/json/$IPAddr" -UseBasicParsing
                             $parsed = $wr.content | convertfrom-json
                             $RelayData.ASName = $parsed.isp 
                             $RelayData.ASNumber = $parsed.asn
