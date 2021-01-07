@@ -150,6 +150,4 @@ If you want the power of the cloud to do your heavy lifting, the output for each
 
 ## To-do list
 
-* In progress: Add data enrichment for ASN & ISP name when empty values are returned from the Tor Project API
-
 * Pending: Parse IPv6 address and port in TorRelayIPs.csv
