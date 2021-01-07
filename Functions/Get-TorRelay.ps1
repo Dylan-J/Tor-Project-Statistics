@@ -98,7 +98,7 @@ function Get-TorRelay {
                 if ($ReverseLookup) {
                     if ($null -eq $Relay.verified_host_names) {
                         Write-verbose "Performing lookup | $($Ip.SubString(0,$Ip.IndexOf(":")))"
-                        $dnslookup = Resolve-DnsName -Name $Ip.SubString(0, $Ip.IndexOf(":")) -TcpOnly -DnsOnly -QuickTimeout -Server 1.1.1.1 -ErrorAction SilentlyContinue
+                        $dnslookup = Resolve-DnsName -Name $Ip.SubString(0, $Ip.IndexOf(":")) -TcpOnly -DnsOnly -QuickTimeout -ErrorAction SilentlyContinue
                         if ($null -eq $dnslookup) {
                             $RelayIPData.Hostname = $Relay.verified_host_names
                         }
