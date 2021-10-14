@@ -136,15 +136,15 @@ The following command will show you all connection attempts to a Tor relay node,
 
 If you want the power of the cloud to do your heavy lifting, the output for each CSV can be found below. Each file is updated daily at 12AM and 12PM UTC.
 
-* https://msde.blob.core.windows.net/public/TorRelaySummary.csv
+* https://torinfo.blob.core.windows.net/public/TorRelaySummary.csv
 
-* https://msde.blob.core.windows.net/public/TorBridgeSummary.csv
+* https://torinfo.blob.core.windows.net/public/TorBridgeSummary.csv
 
-* https://msde.blob.core.windows.net/public/TorRelayData.csv
+* https://torinfo.blob.core.windows.net/public/TorRelayData.csv
 
-* https://msde.blob.core.windows.net/public/TorRelayIPs.csv
+* https://torinfo.blob.core.windows.net/public/TorRelayIPs.csv
 
-* https://msde.blob.core.windows.net/public/TorRelayExitPolicy.csv
+* https://torinfo.blob.core.windows.net/public/TorRelayExitPolicy.csv
 
   
 
