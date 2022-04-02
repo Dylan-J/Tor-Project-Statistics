@@ -18,7 +18,7 @@ function Get-TorSummary {
         }
     }
 
-    Write-Verbose "Downloading TOR relay summary"
+    Write-Verbose "Downloading TOR node information"
     $Uri = "https://onionoo.torproject.org/summary"
     $PageResponse = Invoke-WebRequest $Uri -UseBasicParsing
     $RelayPublishDate = ($PageResponse.Content | convertfrom-json).relays_published
@@ -31,6 +31,7 @@ function Get-TorSummary {
         $RelaySummary.IPAddress = $RelayInfo.a
         $RelaySummary.IsRunning = $RelayInfo.r
         $RelaySummary.RelayPublishDate = $RelayPublishDate
+        $RelaySummary.NodeType = "Relay"
         $SummaryList += $RelaySummary
     }
 
@@ -41,6 +42,7 @@ function Get-TorSummary {
         $BridgeSummary.Fingerprint = $BridgeInfo.h
         $BridgeSummary.IsRunning = $BridgeInfo.r
         $BridgeSummary.BridgePublishDate = $BridgePublishDate
+        $BridgeSummary.NodeType = "Bridge"
         $BridgeList += $BridgeSummary
     }
     Write-Host "Saving output to $OutputFolder"

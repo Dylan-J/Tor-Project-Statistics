@@ -16,7 +16,7 @@
     Author            = 'Dylan Jones'
 
     # Company or vendor of this module
-    CompanyName       = 'Microsoft'
+    CompanyName       = ''
 
     # Copyright statement for this module
     Copyright         = '(c) Dylan Jones. All rights reserved.'
@@ -27,13 +27,15 @@
     # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
     NestedModules     = @(
         'Functions\Get-TorSummary.ps1',
-        'Functions\Get-TorRelay.ps1'
+        'Functions\Get-TorRelay.ps1',
+        'Functions\Invoke-TorEnrichment.ps1'
     )
 
     # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
     FunctionsToExport = @(
         'Get-TorSummary',
-        'Get-TorRelay'
+        'Get-TorRelay',
+        'Invoke-TorEnrichment'
     )
 
     ScriptsToProcess  = @(
@@ -41,7 +43,9 @@
         'Classes\TorRelayData.ps1',
         'Classes\TorRelayIP.ps1',
         'Classes\TorRelaySummary.ps1',
-        'Classes\TorRelayExitPolicy.ps1'
+        'Classes\TorRelayExitPolicy.ps1',
+        'Classes\TorFlags.ps1',
+        'Classes\TorIPInfo.ps1'
     )
 
     RequiredAssemblies = @()
