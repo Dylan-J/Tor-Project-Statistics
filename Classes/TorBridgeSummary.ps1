@@ -3,4 +3,5 @@ class TorBridgeSummary {
     [string] $Fingerprint
     [boolean] $IsRunning
     [datetime] $BridgePublishDate
+    [string] $NodeType
 }

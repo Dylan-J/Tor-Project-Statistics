@@ -4,4 +4,5 @@ class TorRelaySummary {
     [string] $IPAddress
     [boolean] $IsRunning
     [datetime] $RelayPublishDate
+    [string] $NodeType
 }
