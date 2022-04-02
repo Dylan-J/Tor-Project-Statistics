@@ -71,7 +71,7 @@ This function uses output from TorRelayIPs.csv to call the ipwhois.io API, enric
 **TorIPInfo.csv**
 
 * New output file from calling Invoke-TorEnrichment, includes a range of supplementary information including ASN, ISP, registered owner and more.
-* 
+
 # Command Output
 
 ### Get-TorSummary
