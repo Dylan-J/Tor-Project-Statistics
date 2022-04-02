@@ -142,6 +142,8 @@ If you want the power of the cloud to do your heavy lifting, the output for each
 
 * https://torinfo.blob.core.windows.net/public/TorRelayIPs.csv
 
+* https://torinfo.blob.core.windows.net/public/TorRelayFlags.csv
+
 * https://torinfo.blob.core.windows.net/public/TorIPInfo.csv
 
 * https://torinfo.blob.core.windows.net/public/TorRelayExitPolicy.csv
