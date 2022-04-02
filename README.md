@@ -20,7 +20,7 @@ Version 2.0 includes a number of key changes to the way data is collected and pr
   * TorRelayIPs
     * IPv6 addresses and ports are now parsed!
     * Replacement of the IPv4Address and IPv6Address fields with "IPAddress"
-    * Replacement of the IPv4Port and IPv4Port fields with "Port"
+    * Replacement of the IPv4Port and IPv6Port fields with "Port"
   * TorRelayFlags
     * New output that captures the individual flags for each relay
   * TorIPInfo
