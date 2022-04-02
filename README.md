@@ -64,6 +64,14 @@ Get-TorRelay -OutputFolder C:\TorStats\Output
 
 * Optional switch: ExportExitPolicy. This will extract node exit policies. Although not completely parsed, it could be used to identify suitable exit nodes if you have a specific set of requirements.
 
+### Invoke-TorEnrichment
+
+This function uses output from TorRelayIPs.csv to call the ipwhois.io API, enriching all IP addresses with updated IP WHOIS information.
+
+**TorIPInfo.csv**
+
+* New output file from calling Invoke-TorEnrichment, includes a range of supplementary information including ASN, ISP, registered owner and more.
+* 
 # Command Output
 
 ### Get-TorSummary
@@ -91,14 +99,6 @@ This is where the magic happens. Disclaimer: not all data returned from the API 
 **Optional: TorRelayExitPolicy.csv**
 
 * The exit policy data on each node and it's exit policy, including what it does or does not allow.
-  
-### Invoke-TorEnrichment
-
-This function uses output from TorRelayIPs.csv to call the ipwhois.io API, enriching all IP addresses with updated IP WHOIS information.
-
-**TorIPInfo.csv**
-
-* New output file from calling Invoke-TorEnrichment, includes a range of supplementary information including ASN, ISP, registered owner and more.
   
 ## Uses for Data
 
