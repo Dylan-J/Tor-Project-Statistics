@@ -122,31 +122,13 @@ The following command will show you all connection attempts to a Tor relay node,
 
     let TorRelayData = (
     externaldata (Nickname:string,Fingerprint:string,EntryAddress:string,IPAddress:string,Port:string,AddressType:string,Hostname:string,CountryCode:string,IsRunning:bool,RelayPublishDate:string,LastChangedIPData:string)
-    [h@'https://torinfo.blob.core.windows.net/public/TorRelayIPs.csv'] with (ignoreFirstRecord=true,format="csv")
+    [h@'YOUR URL'] with (ignoreFirstRecord=true,format="csv")
     | where AddressType == "IPv4"
     );
     TorRelayData
     | join kind=inner DeviceNetworkEvents on $left.IPAddress == $right.RemoteIP
     | join kind=inner (DeviceInfo | distinct DeviceId, PublicIP) on DeviceId
     | project Timestamp, DeviceId, LocalPublicIP = PublicIP, LocalIP, RemoteIP, TorIP = IPAddress, Hostname, CountryCode, ActionType, InitiatingProcessFileName, InitiatingProcessFolderPath
-
-## Published list
-
-If you want the power of the cloud to do your heavy lifting, the output for each CSV can be found below. Each file is updated daily at 12AM and 12PM UTC.
-
-* https://torinfo.blob.core.windows.net/public/TorRelaySummary.csv
-
-* https://torinfo.blob.core.windows.net/public/TorBridgeSummary.csv
-
-* https://torinfo.blob.core.windows.net/public/TorRelayData.csv
-
-* https://torinfo.blob.core.windows.net/public/TorRelayIPs.csv
-
-* https://torinfo.blob.core.windows.net/public/TorRelayFlags.csv
-
-* https://torinfo.blob.core.windows.net/public/TorIPInfo.csv
-
-* https://torinfo.blob.core.windows.net/public/TorRelayExitPolicy.csv
 
 ## To-do list
 
